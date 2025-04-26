@@ -1,4 +1,3 @@
-import { useState } from 'react';
 
 interface Order {
     name: string;
@@ -30,7 +29,6 @@ const foodCategories: Category[] = [
 ];
 
 const Dashboard = () => {
-    const [displayValue] = useState('123');
 
     return (
         <div className="content">
@@ -62,12 +60,6 @@ const Dashboard = () => {
                     ))}
                 </div>
             </section>
-            <div className="keypad">
-                <button className="btn plus">+</button>
-                <div className="display">{displayValue}</div>
-                <button className="btn minus">-</button>
-                <button className="btn del">del</button>
-            </div>
         </div>
     );
 };

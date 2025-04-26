@@ -1,0 +1,62 @@
+/* Стили для контейнера контента */
+.content {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для заголовка */
+h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Стили для списка заказов */
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Стили для карточки заказа */
+.order-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    transition: box-shadow 0.2s;
+}
+
+.order-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для текста в карточке */
+.order-table {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    display: block; /* Для корректного отображения как блочного элемента */
+}
+
+.order-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.order-items li {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.order-total {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: block; /* Для корректного отображения как блочного элемента */
+}

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const Topbar = () => {
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
+    const [displayValue] = useState('123');
 
     useEffect(() => {
         const updateDateTime = () => {
@@ -23,6 +24,12 @@ const Topbar = () => {
             <div className="clock">
                 <div className="time">{time}</div>
                 <div className="date">{date}</div>
+            </div>
+            <div className="keypad">
+                <button className="btn minus">-</button>
+                <button className="btn plus">+</button>
+                <button className="btn del">del</button>
+                <div className="display">{displayValue}</div>
             </div>
         </div>
     );

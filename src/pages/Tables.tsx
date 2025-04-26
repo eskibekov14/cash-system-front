@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import '../css/Tables.css'
 interface Table {
     number: number;
     seats: number;
