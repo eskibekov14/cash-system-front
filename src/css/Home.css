@@ -1,0 +1,195 @@
+/* Главный контейнер */
+.home-container {
+    display: flex;
+    min-height: 100vh;
+    margin: 0; /* убираем auto */
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Сайдбар */
+.sidebar {
+    width: 220px;
+    background-color: #1e293b;
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0; /* не сжимать на маленьких экранах */
+}
+
+.sidebar h2 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.sidebar a:hover {
+    color: #93c5fd;
+}
+
+.header-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Основная часть */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: #f8fafc;
+    color: #1a1a1a;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* 📱 Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .sidebar h2 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .header-nav {
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+}
+
+
+/* Topbar */
+.topbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+.search-bar input {
+    width: 200px;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+}
+.clock .time {
+    background: #fff;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+.clock .date {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* Orders panel */
+.orders-panel {
+    margin-bottom: 1.5rem;
+}
+.order-item {
+    background: #fff5ea;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+/* Keypad */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(2, 80px);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.btn {
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.btn.plus { background: #f5a25d; color: #fff; }
+.btn.minus { background: #a26e3b; color: #fff; }
+.btn.del { background: #b5884a; color: #fff; }
+.display {
+    background: #6b8e3b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Categories */
+.categories h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.25rem;
+}
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.category-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+.category-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+.category-card span {
+    display: block;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    color: #555;
+}
+
