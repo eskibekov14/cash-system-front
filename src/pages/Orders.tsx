@@ -1,3 +1,5 @@
+import '../css/Orders.css'
+
 interface Order {
     id: number;
     table: number;
