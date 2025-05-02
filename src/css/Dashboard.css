@@ -1,0 +1,143 @@
+/* Dashboard.css */
+.dashboard-content {
+    height: 100%;        /* чтобы flex-родитель передал свою высоту */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Categories Section */
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2d3436;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+.categories {
+    /* занимать 50% от высоты .dashboard-content (можно подкорректировать) */
+    display: flex;
+    justify-content: space-around;
+    flex: 0 0 50%;
+    overflow-y: auto;
+    /* если нужно, можете добавить паддинги или gap */
+}
+
+.category-column h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+}
+
+.category-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.category-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.category-card span {
+    display: block;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Menu Section */
+.menu-section {
+    /* занимает всё оставшееся пространство */
+    flex: 1;
+    overflow-y: auto;;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 1rem;
+}
+
+.menu-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    margin: 10px;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+}
+
+.menu-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.menu-content {
+    padding: 1.5rem;
+}
+
+.menu-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-title {
+    font-size: 1.2rem;
+    color: #2d3436;
+    margin: 0;
+}
+
+.menu-price {
+    font-weight: 700;
+    color: #e74c3c;
+    font-size: 1.2rem;
+}
+
+.menu-description {
+    color: #636e72;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.menu-category {
+    display: inline-block;
+    background: #f8f9fa;
+    color: #636e72;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
