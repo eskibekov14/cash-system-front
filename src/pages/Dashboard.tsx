@@ -5,8 +5,11 @@ import { useMenu } from '../hooks/useMenu';
 
 
 const Dashboard = () => {
-    const { category,activeCategory, visibleSubCategory, handleCategorySelect, loading: catLoading } = useCategories();
-    const { menuItems, loading: menuLoading } = useMenu();
+    const { category,activeCategory, subCategories,activeSubCategory, handleCategorySelect,handleSubCategorySelect, loading: catLoading } = useCategories();
+    const { menuItems, loading: menuLoading } = useMenu(
+        activeCategory?.id,
+        activeSubCategory?.id
+    );
     if(catLoading || menuLoading) {
         return <div>Загрузка...</div>
     }
@@ -31,12 +34,14 @@ const Dashboard = () => {
                 <div className="category-column">
                     <h2 className="section-title">Food Categories</h2>
                     <div className="category-grid">
-                        {visibleSubCategory.map((subCat) => (
-                            <div key={subCat.id} className="category-card">
-                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpF76alRkEHta49mZlMC2I03Zkouc1AZQPTA&s'
-                                     alt={subCat.name} />
-                                <span>{subCat.name}</span>
-                            </div>
+                        {subCategories.map((subCat) => (
+                            <button
+                                key={subCat.id}
+                                className={subCat.id === activeSubCategory?.id ? 'active' : ''}
+                                onClick={() => handleSubCategorySelect(subCat)}
+                            >
+                                {subCat.name}
+                            </button>
                         ))}
                     </div>
                 </div>

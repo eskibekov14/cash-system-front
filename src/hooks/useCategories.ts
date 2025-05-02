@@ -6,7 +6,8 @@ import { Category } from '../domain/models/Category';
 export function useCategories() {
     const [category, setCategories] = useState<Category[]>([]);
     const [activeCategory, setActiveCategory] = useState<Category | null>(null);
-    const [visibleSubCategory, setVisibleSubCategories] = useState<Category[]>([]);
+    const [subCategories, setSubCategories] = useState<Category[]>([]);
+    const [activeSubCategory, setActiveSubCategory] = useState<Category | null>(null);
     const [loading, setLoading]= useState(true);
 
     useEffect(() => {
@@ -14,14 +15,20 @@ export function useCategories() {
             .then(({ category }) => {
                 setCategories(category);
                 setActiveCategory(category[0]);
-                setVisibleSubCategories(category[0].subCategories);
+                setSubCategories(category[0].subCategories);
+                setActiveSubCategory(null);
             })
             .finally(() => setLoading(false));
     }, []);
 
     const handleCategorySelect = (category: Category) => {
         setActiveCategory(category);
-        setVisibleSubCategories(category.subCategories || []);
+        setSubCategories(category.subCategories || []);
+        setActiveSubCategory(null)
     };
-    return { category,activeCategory, visibleSubCategory, handleCategorySelect, loading };
+    const handleSubCategorySelect = (sub: Category) => {
+        setActiveSubCategory(sub);
+    };
+
+    return { category,activeCategory, subCategories,activeSubCategory, handleCategorySelect,handleSubCategorySelect, loading };
 }
