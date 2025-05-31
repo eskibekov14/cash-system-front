@@ -2,14 +2,21 @@ import '../css/Dashboard.css'
 
 import { useCategories } from '../hooks/useCategories';
 import { useMenu } from '../hooks/useMenu';
+import {useOrder} from "../context/OrderContext.tsx";
+import {MenuItem} from "../domain/models/MenuItem.ts";
 
+interface DashboardProps {
+    menuItems: MenuItem[]
+}
 
-const Dashboard = () => {
-    const { category,activeCategory, subCategories,activeSubCategory, handleCategorySelect,handleSubCategorySelect, loading: catLoading } = useCategories();
-    const { menuItems, loading: menuLoading } = useMenu(
+const Dashboard: React.FC<DashboardProps> = () => {
+    const { category, activeCategory, subCategories, activeSubCategory, handleCategorySelect, handleSubCategorySelect, loading: catLoading } = useCategories();
+    const { menuItems: filteredMenuItems, loading: menuLoading } = useMenu(
         activeCategory?.id,
         activeSubCategory?.id
     );
+
+    const { addItem } = useOrder()
     if(catLoading || menuLoading) {
         return <div>Загрузка...</div>
     }
@@ -22,7 +29,7 @@ const Dashboard = () => {
                         {category.map((cat) => (
                             <button
                                 key={cat.id}
-                                className={cat.id === activeCategory?.id ? 'active' : ''}
+                                className={`subcategory-button ${cat.id === activeCategory?.id ? 'active' : ''}`}
                                 onClick={() => handleCategorySelect(cat)}
                             >
                                 {cat.name}
@@ -37,7 +44,7 @@ const Dashboard = () => {
                         {subCategories.map((subCat) => (
                             <button
                                 key={subCat.id}
-                                className={subCat.id === activeSubCategory?.id ? 'active' : ''}
+                                className={`subcategory-button ${subCat.id === activeSubCategory?.id ? 'active' : ''}`}
                                 onClick={() => handleSubCategorySelect(subCat)}
                             >
                                 {subCat.name}
@@ -45,21 +52,19 @@ const Dashboard = () => {
                         ))}
                     </div>
                 </div>
+
             </section>
 
             <section className="menu-section">
                 <h2 className="section-title">Our Menu</h2>
                 <div className="menu-grid">
-                    {menuItems.map(item => (
-                        <div key={item.id} className="menu-card">
-                            <div className="menu-content">
-                                <div className="menu-header">
-                                    <h3 className="menu-title">{item.name}</h3>
-                                    <span className="menu-category">{item.subCategory.name}</span>
-                                    <span className="menu-price">${item.basePrice.toFixed(2)}</span>
-                                </div>
-                            </div>
-                        </div>
+                    {filteredMenuItems.map(item => (
+                        <button
+                            key={item.id}
+                            onClick={() => addItem(item)}
+                        >
+                            {item.name} - {item.subCategory.name} -{item.basePrice}
+                        </button>
                     ))}
                 </div>
             </section>

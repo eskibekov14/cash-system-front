@@ -1,13 +1,17 @@
 // src/api/services/menuService.ts
 import httpClient from '../httpClient';
 import { MenuItem } from '../../domain/models/MenuItem';
-
 export const menuService = {
-    getAll: () => httpClient.get<MenuItem[]>('/menu-item'),
+    getAll: async (): Promise<MenuItem[]> => {
+        const { data } = await httpClient.get<MenuItem[]>('/menu-item');
+        return data;
+    },
 
-    getByCategory: (categoryId: number, subCategoryId?: number) => {
+    getByCategory: async (categoryId: number, subCategoryId?: number): Promise<MenuItem[]> => {
         const params: Record<string, number> = { categoryId };
         if (subCategoryId != null) params.subCategoryId = subCategoryId;
-        return httpClient.get<MenuItem[]>('/menu-item', { params });
-    }
+
+        const { data } = await httpClient.get<MenuItem[]>('/menu-item', { params });
+        return data;
+    },
 };

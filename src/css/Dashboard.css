@@ -60,6 +60,8 @@
     border-bottom: 1px solid #eee;
 }
 
+
+
 .category-card span {
     display: block;
     padding: 0.75rem;
@@ -68,11 +70,51 @@
     color: #333;
 }
 
+.category-button {
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.category-button.active {
+    color: black;
+    background-color: rgba(195, 183, 183, 0.53); /* более тёмный зелёный или любой другой */
+    font-weight: bold;
+}
+
+
+/*subcategory*/
+
+
+.subcategory-button {
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.subcategory-button.active {
+    color: black;
+    background-color: rgba(195, 183, 183, 0.53); /* более тёмный зелёный или любой другой */
+    font-weight: bold;
+}
+
+
 /* Menu Section */
 .menu-section {
     /* занимает всё оставшееся пространство */
     flex: 1;
-    overflow-y: auto;;
+    overflow-y: auto;
+    margin: 20px;
 }
 
 .menu-grid {
